@@ -189,7 +189,7 @@ a {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(4, 6, 11, 0.95), rgba(4, 6, 11, 0.48), rgba(4, 6, 11, 0.9)),
-    url("assets/asemrowende-lig.png") center 44% / cover;
+    url("images/asemrowende-lig.jpg") center 44% / cover;
   opacity: 0.82;
 }
 
