@@ -91,17 +91,17 @@ a {
 .brand {
   display: inline-flex;
   align-items: center;
-  min-width: 150px;
+  min-width: 72px;
 }
 
 .brand img {
-  width: clamp(150px, 14vw, 230px);
-  height: 46px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
-  object-position: left center;
+  object-position: center;
   filter:
-    drop-shadow(0 0 14px rgba(255, 54, 219, 0.28))
-    drop-shadow(0 0 10px rgba(80, 167, 255, 0.2));
+    drop-shadow(0 0 16px rgba(244, 201, 93, 0.34))
+    drop-shadow(0 0 14px rgba(210, 55, 255, 0.25));
 }
 
 .site-nav {
@@ -197,18 +197,18 @@ a {
   display: flex;
   justify-content: center;
   max-width: 680px;
-  margin-bottom: 16px;
+  margin: 0 auto 18px;
 }
 
 .hero-logo {
-  width: clamp(210px, 20vw, 330px);
-  aspect-ratio: 2.18 / 1;
+  width: clamp(190px, 24vw, 340px);
+  aspect-ratio: 1 / 1;
   object-fit: contain;
-  border-radius: var(--radius);
+  border-radius: 50%;
   filter:
-    drop-shadow(0 0 34px rgba(255, 54, 219, 0.36))
-    drop-shadow(0 0 22px rgba(80, 167, 255, 0.28))
-    drop-shadow(0 0 18px rgba(244, 201, 93, 0.16));
+    drop-shadow(0 0 38px rgba(244, 201, 93, 0.34))
+    drop-shadow(0 0 32px rgba(210, 55, 255, 0.32))
+    drop-shadow(0 0 20px rgba(255, 255, 255, 0.08));
   animation: logoFloat 4.8s ease-in-out infinite;
 }
 
@@ -672,6 +672,13 @@ dd {
 @media (max-width: 920px) {
   .site-header {
     grid-template-columns: auto auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .brand img {
+    width: 50px;
+    height: 50px;
   }
 
   .menu-toggle {
