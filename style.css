@@ -91,31 +91,17 @@ a {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 900;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  min-width: 150px;
 }
 
-.brand span span {
-  color: var(--muted);
-}
-
-.brand-icon,
-.pulse-logo {
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  color: var(--gold);
-  font-weight: 900;
-  box-shadow: 0 0 22px rgba(244, 201, 93, 0.35);
-}
-
-.brand-icon {
-  width: 38px;
-  height: 38px;
-  font-size: 0.75rem;
+.brand img {
+  width: clamp(150px, 14vw, 230px);
+  height: 46px;
+  object-fit: contain;
+  object-position: left center;
+  filter:
+    drop-shadow(0 0 14px rgba(255, 54, 219, 0.28))
+    drop-shadow(0 0 10px rgba(80, 167, 255, 0.2));
 }
 
 .site-nav {
@@ -158,6 +144,8 @@ a {
 .tiktok-dot { background: linear-gradient(135deg, #00f5ff, #ff2f83); color: #ff2f83; }
 .facebook-dot { background: #3b82f6; color: #3b82f6; }
 .instagram-dot { background: linear-gradient(135deg, #ffd35a, #ff3d7f, #7249ff); color: #ff3d7f; }
+.apple-dot { background: #f4f4f6; color: #f4f4f6; }
+.ytmusic-dot { background: linear-gradient(135deg, #ff2020, #f4c95d); color: #ff2020; }
 
 .menu-toggle {
   display: none;
@@ -200,16 +188,28 @@ a {
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr) minmax(230px, 320px);
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 320px);
   align-items: center;
   gap: clamp(24px, 5vw, 60px);
 }
 
-.pulse-logo {
-  width: clamp(105px, 12vw, 150px);
-  height: clamp(105px, 12vw, 150px);
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
-  background: rgba(0, 0, 0, 0.42);
+.hero-mark {
+  display: flex;
+  justify-content: center;
+  max-width: 680px;
+  margin-bottom: 16px;
+}
+
+.hero-logo {
+  width: clamp(210px, 20vw, 330px);
+  aspect-ratio: 2.18 / 1;
+  object-fit: contain;
+  border-radius: var(--radius);
+  filter:
+    drop-shadow(0 0 34px rgba(255, 54, 219, 0.36))
+    drop-shadow(0 0 22px rgba(80, 167, 255, 0.28))
+    drop-shadow(0 0 18px rgba(244, 201, 93, 0.16));
+  animation: logoFloat 4.8s ease-in-out infinite;
 }
 
 .hero h1 {
@@ -566,15 +566,45 @@ dd {
 
 .follow-list {
   display: grid;
-  gap: 15px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
   margin-top: 22px;
 }
 
 .follow-list a {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 12px;
+  gap: 10px 12px;
+  min-height: 64px;
+  padding: 12px;
+  border: 1px solid rgba(244, 201, 93, 0.28);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.22);
   color: var(--text);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.follow-list a:hover {
+  transform: translateY(-2px) scale(1.01);
+  border-color: rgba(244, 201, 93, 0.72);
+  background: rgba(244, 201, 93, 0.07);
+  box-shadow: 0 0 26px rgba(244, 201, 93, 0.12);
+}
+
+.follow-list span {
+  grid-row: span 2;
+}
+
+.follow-list strong {
+  align-self: end;
+  font-size: 0.96rem;
+}
+
+.follow-list small {
+  align-self: start;
+  color: var(--muted);
+  font-size: 0.73rem;
 }
 
 .email-link {
@@ -628,6 +658,11 @@ dd {
   to { transform: scale(1.08); opacity: 0.28; }
 }
 
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
 @media (max-width: 1200px) {
   .music-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -668,10 +703,6 @@ dd {
   .split-section,
   .connect {
     grid-template-columns: 1fr;
-  }
-
-  .hero-mark {
-    display: none;
   }
 
   .hero-quote {
@@ -716,6 +747,7 @@ dd {
   }
 
   .release-stamp div,
+  .follow-list,
   .contact-form,
   .site-footer {
     grid-template-columns: 1fr;
