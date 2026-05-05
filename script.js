@@ -39,5 +39,6 @@ contactForm.addEventListener("submit", (event) => {
   const body = encodeURIComponent(`Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\n\n${decodeURIComponent(message)}`);
 
   // Change this email address if your booking/contact email changes.
-  window.location.href = `mailto:brackenhit@gmail.com?subject=${subject}&body=${body}`;
+  // GitHub Pages is static, so this opens Gmail in the browser instead of a desktop mail app.
+  window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=brackenhit@gmail.com&su=${subject}&body=${body}`, "_blank", "noopener,noreferrer");
 });
